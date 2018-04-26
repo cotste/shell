@@ -2,7 +2,7 @@
 
 tmux start-server
 
-tmux new-session -s main -n terminal -d  -x 151 -y 39
+tmux new-session -s main -n terminal -d  -x $(tput cols) -y $(tput lines)
 
 tmux new-window -t main -n editor "$(pwd); vim -c 'NERDTree'"
 
@@ -10,7 +10,7 @@ tmux new-window -t main -n editor "$(pwd); vim -c 'NERDTree'"
 #tmux send-keys -t editor "vim -c 'NERDTree'" C-m
 #tmux send-keys -t editor ":NERDTree" C-m
 
-tmux split-window -t editor -p 20
+tmux split-window -t editor -l 10
 tmux select-pane -t 0
 
 tmux neww -t main -n debug
